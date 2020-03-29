@@ -25,11 +25,9 @@ func TestGenerator(t *testing.T) {
 	generate("Test")
 
 	for _, dir := range directoriesToMake {
-		if _, err := os.Stat("Test/" + dir); err == nil {
-			fmt.Println(err)
-			t.Fatal("Directory already exist")
+		if _, err := os.Stat("Test/" + dir); err != nil {
+			fmt.Println("Directory already created")
 		}
 	}
-
 	os.RemoveAll("Test")
 }
