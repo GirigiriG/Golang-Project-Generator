@@ -10,7 +10,7 @@ func main() {
 	var name string
 	fmt.Print("Project Name: ")
 	fmt.Scan(&name)
-
+	
 	generate(name)
 }
 
