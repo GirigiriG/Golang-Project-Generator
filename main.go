@@ -15,8 +15,6 @@ func generate() {
 	directoriesToMake := []string{"cmd", "internal", "pkg", "vendor", "api", "web", "config", "init", "script", "build", "deployments", "test"}
 
 	for _, dir := range directoriesToMake {
-		os.Mkdir(dir, 0777)
-
 		if _, err := os.Stat(dir); os.IsNotExist(err) {
 
 			if err := os.Mkdir("../"+dir, 0777); err != nil {
@@ -39,7 +37,7 @@ func cleanUp() {
 	os.Chdir("../")
 	wd := getCurrentDirectoryName()
 	wd = strings.ToLower(wd)
-	cmd := exec.Command("npx", "create-react-app", wd)
+	cmd := exec.Command("npx", "create-react-app", wd+"_app")
 	cmd.Start()
 
 	os.RemoveAll("Golang-Project-Generator")
