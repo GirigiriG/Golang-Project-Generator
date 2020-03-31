@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"os/exec"
 )
 
 func main() {
@@ -23,12 +22,12 @@ func generate(name string) {
 
 		if _, err := os.Stat(dir); os.IsNotExist(err) {
 
-			if err := os.Mkdir(name+"/"+dir, 0777); err != nil {
+			if err := os.Mkdir("../"+dir, 0777); err != nil {
 				fmt.Println(err.Error())
 			}
 
 			if dir == "cmd" {
-				f, _ := os.Create(name + "/" + "cmd/main.go")
+				f, _ := os.Create("../" + "cmd/main.go")
 				defer f.Close()
 				f.WriteString("package main\n\n\nfunc main() {\n\n}")
 			}
@@ -40,11 +39,7 @@ func generate(name string) {
 }
 
 func cleanUp(name string) {
-	os.Chdir("./" + name)
-	//copy files and directories over
-	cmd := exec.Command("cp", "*", "../..")
-	cmd.Start()
-
 	os.Chdir("../")
 	os.RemoveAll("Golang-Project-Generator")
+
 }
