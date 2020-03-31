@@ -8,12 +8,7 @@ import (
 )
 
 func main() {
-
-	var name string
-	fmt.Print("Enter React Project Name: ")
-	fmt.Scan(&name)
-
-	generate(name)
+	generate()
 }
 
 func generate(name string) {
@@ -42,19 +37,18 @@ func generate(name string) {
 
 func cleanUp() {
 	os.Chdir("../")
-	wd := getCurrentDirectoryName();
+	wd := getCurrentDirectoryName()
 	wd = strings.ToLower(wd)
 	cmd := exec.Command("npx", "create-react-app", wd)
 	cmd.Start()
-	
+
 	os.RemoveAll("Golang-Project-Generator")
-	
+
 }
 
-
-func getCurrentDirectoryName() string{
+func getCurrentDirectoryName() string {
 	pwd, _ := os.Getwd()
-	splitDir :=  strings.Split(pwd ,"/")
-	result := splitDir[len(splitDir) - 1]
+	splitDir := strings.Split(pwd, "/")
+	result := splitDir[len(splitDir)-1]
 	return result
 }
