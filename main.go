@@ -11,7 +11,7 @@ func main() {
 	generate()
 }
 
-func generate(name string) {
+func generate() {
 	directoriesToMake := []string{"cmd", "internal", "pkg", "vendor", "api", "web", "config", "init", "script", "build", "deployments", "test"}
 
 	for _, dir := range directoriesToMake {
