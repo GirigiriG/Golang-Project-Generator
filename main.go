@@ -15,7 +15,7 @@ func generate() {
 	directoriesToMake := []string{"cmd", "internal", "pkg", "vendor", "api", "web", "config", "init", "script", "build", "deployments", "test"}
 
 	for _, dir := range directoriesToMake {
-		os.Mkdir(name, 0777)
+		os.Mkdir(dir, 0777)
 
 		if _, err := os.Stat(dir); os.IsNotExist(err) {
 
