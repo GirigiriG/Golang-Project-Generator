@@ -35,5 +35,5 @@ func cleanUp() {
 	os.Chdir("../")
 	os.RemoveAll("Golang-Project-Generator")
 	cmd := exec.Command("cd", "..")
-	cmd.start()
+	cmd.Start()
 }
