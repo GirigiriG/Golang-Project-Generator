@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"os/exec"
 )
 
 func main() {
@@ -34,8 +35,16 @@ func generate(name string) {
 		}
 
 	}
+
+	cleanUp(name)
 }
 
-func runMeOnce() {
+func cleanUp(name string) {
+	os.Chdir("./" + name)
+	//copy files and directories over
+	cmd := exec.Command("cp", "*", "../..")
+	cmd.Start()
 
+	os.Chdir("../")
+	os.RemoveAll("Golang-Project-Generator")
 }
