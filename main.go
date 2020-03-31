@@ -41,6 +41,8 @@ func cleanUp() {
 	cmd.Start()
 
 	os.RemoveAll("Golang-Project-Generator")
+	cmd = exec.Command("cd", "..")
+	cmd.Start()
 
 }
 
