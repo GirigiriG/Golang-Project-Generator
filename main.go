@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"strings"
 )
 
 func main() {
@@ -26,6 +27,7 @@ func generate() {
 				f.WriteString("package main\n\n\nfunc main() {\n\n}")
 			}
 		}
+
 	}
 
 	cleanUp()
@@ -33,7 +35,17 @@ func generate() {
 
 func cleanUp() {
 	os.Chdir("../")
-	os.RemoveAll("Golang-Project-Generator")
-	cmd := exec.Command("cd", "..")
+	wd := getCurrentDirectoryName()
+	wd = strings.ToLower(wd)
+	cmd := exec.Command("npx", "create-react-app", wd+"_app")
 	cmd.Start()
+
+	os.RemoveAll("Golang-Project-Generator")
+}
+
+func getCurrentDirectoryName() string {
+	pwd, _ := os.Getwd()
+	splitDir := strings.Split(pwd, "/")
+	result := splitDir[len(splitDir)-1]
+	return result
 }
