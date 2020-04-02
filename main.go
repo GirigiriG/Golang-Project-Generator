@@ -21,6 +21,12 @@ func generate() {
 				fmt.Println(err.Error())
 			}
 
+			if dir != "cmd" {
+				f, _ := os.Create("../" + dir + "/.gitignore")
+				defer f.Close()
+				f.WriteString("*\n!.gitignore")
+			}
+
 			if dir == "cmd" {
 				f, _ := os.Create("../" + "cmd/main.go")
 				defer f.Close()
@@ -40,7 +46,7 @@ func cleanUp() {
 	cmd := exec.Command("npx", "create-react-app", wd+"_app")
 	cmd.Start()
 
-	os.RemoveAll("Golang-Project-Generator")
+	//os.RemoveAll("Golang-Project-Generator")
 }
 
 func getCurrentDirectoryName() string {
