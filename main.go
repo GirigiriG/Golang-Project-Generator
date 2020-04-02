@@ -46,7 +46,7 @@ func cleanUp() {
 	cmd := exec.Command("npx", "create-react-app", wd+"_app")
 	cmd.Start()
 
-	//os.RemoveAll("Golang-Project-Generator")
+	os.RemoveAll("Golang-Project-Generator")
 }
 
 func getCurrentDirectoryName() string {
